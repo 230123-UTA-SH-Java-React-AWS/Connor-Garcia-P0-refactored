@@ -24,7 +24,7 @@ pipeline {
         stage('Deploying into docker container') {
             steps {
                 //Stop any running containers of this image
-                sh 'sudo docker rm -f $(sudo docker ps -f name=p0refactored -q) || true'
+                sh 'sudo docker rm -f $(sudo docker ps -a -f name=p0refactored -q)'
                 
                 //Run latest version of image in a container
                 sh 'sudo docker run -p 7475:8080 -e url=$proj0url --name p0refactored connoreg/p0refactored:latest'
