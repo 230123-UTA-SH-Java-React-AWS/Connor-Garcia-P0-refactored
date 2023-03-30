@@ -27,7 +27,7 @@ pipeline {
                 sh 'sudo docker rm -f $(sudo docker ps -a -f name=p0refactored -q)'
                 
                 //Run latest version of image in a container
-                sh 'sudo docker run -p 7475:7475 -e proj0url=$proj0url --name p0refactored connoreg/p0refactored:latest'
+                sh 'sudo docker run -d -p 7475:7475 -e proj0url=$proj0url --name p0refactored connoreg/p0refactored:latest'
             }
         }
     }
