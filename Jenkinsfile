@@ -17,7 +17,7 @@ pipeline {
                 sh 'sudo docker image prune -f'
                 
                 //Builds the image of our application
-                sh 'sudo docker build -t connoreg/p0refactored:latest ./Dockerfile'
+                sh 'sudo docker build -t connoreg/p0refactored:latest .'
             }
         }
 
