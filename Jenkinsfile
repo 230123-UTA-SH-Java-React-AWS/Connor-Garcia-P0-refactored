@@ -17,7 +17,7 @@ pipeline {
                 sh 'sudo docker image prune -f'
                 
                 //Builds the image of our application
-                sh 'sudo docker build -t connoreg/p0refactored:latest .'
+                sh 'sudo docker build -t connoreg/p0refactored:latest ./Dockerfile'
             }
         }
 
@@ -27,7 +27,7 @@ pipeline {
                 sh 'sudo docker rm -f $(sudo docker ps -f name=p0refactored -q)'
                 
                 //Run latest version of image in a container
-                sh 'sudo docker run -p 7475:8080 -e url=$dburl --name p0refactored connoreg/p0refactored:latest'
+                sh 'sudo docker run -p 7475:8080 -e url=$proj0url --name p0refactored connoreg/p0refactored:latest'
             }
         }
     }
